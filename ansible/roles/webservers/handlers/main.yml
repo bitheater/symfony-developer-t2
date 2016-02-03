@@ -1,0 +1,9 @@
+---
+- name: reload php-fpm
+  service: name=php-fpm7.0 state=reloaded
+
+- name: reload nginx
+  service: name=nginx state=reloaded
+
+- name: start nginx
+  service: name=nginx state=started

@@ -1,0 +1,6 @@
+BlogBundle\Entity\Post:
+    properties:
+        title:
+            - NotBlank: ~
+        content:
+            - NotBlank: ~

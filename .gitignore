@@ -1,0 +1,10 @@
+/.idea/
+/.vagrant/
+/web/bundles/
+/web/css/
+/web/js/
+
+app/cache/*
+app/logs/*
+
+vendor/

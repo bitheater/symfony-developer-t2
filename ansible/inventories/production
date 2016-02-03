@@ -1,0 +1,11 @@
+[prod-webservers]
+127.0.0.1
+
+[webservers:children]
+prod-webservers
+
+[prod:children]
+prod-webservers
+
+[production:children]
+prod-webservers

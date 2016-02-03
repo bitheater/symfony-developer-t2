@@ -1,0 +1,25 @@
+BlogBundle\Entity\Post:
+    type: entity
+    table: post
+    repositoryClass: BlogBundle\Entity\PostRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        title:
+            type: string
+        slug:
+            type: string
+        content:
+            type: text
+        createdDate:
+            type: datetime
+
+    manyToOne:
+        author:
+            targetEntity: Author
+            inversedBy: posts
+            joinColumn:
+                name: author_id
+                referencedColumnName: id

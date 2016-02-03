@@ -1,0 +1,21 @@
+{% extends 'BlogBundle::layout.html.twig' %}
+
+{% block title %}{{ author.name }}{% endblock %}
+
+{% block content %}
+    <a href="{{ path('blog_homepage') }}" class="btn btn-primary active" role="button">< Homepage</a>
+    <h1>Posts by {{ author.name }}</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{{ gravatar(author.email) }}" class="img-rounded" />
+        </div>
+        <div class="col-sm-8">
+            {% for post in author.posts %}
+                {% include 'BlogBundle:Partials:post-excerpt.html.twig' %}
+            {% else %}
+                <h2>No posts found</h2>
+                <p>Please make sure you run the command to generate some dummy data... Follow the instructions, please!</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

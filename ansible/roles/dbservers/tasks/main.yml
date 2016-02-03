@@ -1,0 +1,13 @@
+---
+- name: install mysql packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - mysql-server
+    - mysql-client
+    - python-mysqldb
+
+- name: create databases
+  mysql_db: name={{ database.db }} state=present
+
+- name: create users
+  mysql_user: name={{ database.user }} password={{ database.pass }} priv={{ database.db }}.*:ALL state=present

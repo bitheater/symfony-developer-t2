@@ -1,0 +1,6 @@
+---
+- hosts: webservers
+  sudo: true
+  roles:
+    - common
+    - webservers

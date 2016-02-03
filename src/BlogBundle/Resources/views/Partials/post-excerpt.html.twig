@@ -1,0 +1,12 @@
+<div>
+    <h3>
+        <a href="{{ path('blog_detail', { 'slug': post.slug }) }}">
+            {{ post.title }}
+        </a>
+    </h3>
+    <small>
+        Created at {{ post.createdDate|date('d/m/Y') }} by <a href="{{ path('author_page', { 'slug': post.author.slug }) }}">{{ post.author.name }}</a>
+    </small>
+    <br><br>
+    <p>{{ post.content|striptags[:200]|raw }}...</p>
+</div>

@@ -1,0 +1,15 @@
+blog_homepage:
+    path:     /
+    defaults: { _controller: BlogBundle:Posts:index }
+
+add_new_post:
+    path:     /post/add
+    defaults: { _controller: BlogBundle:Posts:add }
+
+blog_detail:
+    path:     /post/{slug}
+    defaults: { _controller: BlogBundle:Posts:single }
+
+author_page:
+    path:     /author/{slug}
+    defaults: { _controller: BlogBundle:Authors:single }

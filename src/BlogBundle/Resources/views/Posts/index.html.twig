@@ -1,0 +1,16 @@
+{% extends 'BlogBundle::layout.html.twig' %}
+
+{% block title %}All posts{% endblock %}
+
+{% block content %}
+    <a href="{{ path('add_new_post') }}" class="btn btn-primary active pull-right" role="button">+ Add new post</a>
+    <h1>My Blog</h1>
+    <hr>
+    {% for post in posts %}
+        {% include 'BlogBundle:Partials:post-excerpt.html.twig' %}
+    {% else %}
+        <h2>No posts found</h2>
+        <p>Please make sure you run the command to generate some dummy data... Follow the instructions, please!</p>
+    {% endfor %}
+    {{ knp_pagination_render(posts) }}
+{% endblock %}

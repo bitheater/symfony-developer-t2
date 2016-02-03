@@ -1,0 +1,17 @@
+---
+- name: ensure apt cache is up-to-date
+  apt: update_cache=yes
+
+- name: ensure system base packages are installed
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - curl
+    - wget
+    - python-software-properties
+    - make
+    - ack-grep
+
+- name: ensure system extra packages are installed
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - git

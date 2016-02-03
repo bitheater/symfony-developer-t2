@@ -1,0 +1,11 @@
+{% extends 'BlogBundle::layout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block title %}Add new post{% endblock %}
+
+{% block content %}
+    <a href="{{ path('blog_homepage') }}" class="btn btn-primary active pull-right" role="button">< Homepage</a>
+    <h1>Add new Post</h1>
+    <hr>
+    {{ form(form) }}
+{% endblock %}

@@ -1,0 +1,8 @@
+---
+doc_root: /home/vagrant/test/web
+default_front: app_dev.php
+fronts: (app|app_dev)\.php
+database:
+  db: 'tests'
+  user: 'tests'
+  pass: 'tests'

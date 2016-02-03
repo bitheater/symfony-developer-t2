@@ -1,0 +1,37 @@
+---
+- name: ensure acl is installed
+  apt: pkg=acl state=latest
+
+- name: add ppa repository for php7
+  apt_repository: repo='ppa:ondrej/php'
+
+- name: ensure php7 is installed
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - php7.0
+    - php7.0-mysql
+    - php7.0-fpm
+
+- name: install nginx
+  apt: name=nginx state=present
+  notify: start nginx
+
+- name: remove default site-available
+  file: path=/etc/nginx/sites-available/default state=absent
+
+- name: remove default site-enabled
+  file: path=/etc/nginx/sites-enabled/default state=absent
+
+- name: install site
+  template: src=conf.j2 dest=/etc/nginx/sites-available/vagrant
+
+- name: enable site
+  file: src=/etc/nginx/sites-available/vagrant dest=/etc/nginx/sites-enabled/vagrant state=link
+  notify: reload nginx
+
+- name: create logs
+  file: path=/var/log/nginx/vagrant mode=0777 state=directory
+  notify: reload nginx
+
+- name: install composer globally
+  shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
